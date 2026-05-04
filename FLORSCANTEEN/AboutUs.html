@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Flor's Canteen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <style>
+        .hero-layout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            padding: 40px 10%;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-1 {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("HISTORY.png");
+            background-size: cover;
+        }
+
+        .section-2 {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('HISTORY(2).png');
+            background-size: cover;
+        }
+
+        .section-3 {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('HISTORY(3).png');
+            background-size: cover;
+        }
+
+        .hero-portrait {
+            flex: 1;
+            max-width: 450px;
+            z-index: 2;
+        }
+
+        .hero-portrait img {
+            width: 100%;
+            display: block;
+            filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #f0f0f0;
+        }
+
+        .layout-left {
+            flex-direction: row;
+            text-align: left;
+        }
+
+        .layout-right {
+            flex-direction: row-reverse;
+            text-align: left;
+        }
+
+        .layout-center {
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            padding-bottom: 80px;
+        }
+
+        .layout-center .hero-portrait {
+            max-width: 350px;
+            margin-bottom: 30px;
+        }
+
+        .layout-center .hero-content {
+            max-width: 800px;
+        }
+
+        .mission-vision-container {
+            padding: 80px 5%;
+            display: flex;
+            justify-content: space-around;
+            gap: 40px;
+        }
+
+        .mv-box {
+            flex: 1;
+            text-align: center;
+        }
+
+        .mv-box h3 {
+            color: #ffffff;
+            /* White text for better contrast on orange */
+            background-color: var(--accent);
+            /* Solid Orange Background */
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+
+            /* Border and Pill Styling */
+            padding: 10px 30px;
+            border: 2px solid var(--accent);
+            /* The border requested */
+            border-radius: var(--radius-pill);
+            /* Makes it rounded like a pill */
+            display: inline-block;
+            /* Wraps the border tightly around the text */
+            box-shadow: 0 4px 10px var(--shadow);
+        }
+
+        .pill-content {
+            background: var(--card-bg);
+            color: var(--text-color);
+            padding: 40px;
+            border-radius: var(--radius-card);
+            border: 1px solid var(--border);
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        @media (max-width: 992px) {
+
+            .hero-layout,
+            .layout-right,
+            .layout-left {
+                flex-direction: column !important;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .mission-vision-container {
+                flex-direction: column;
+            }
+        }
+
+        /* --- Meet the Team Styling --- */
+        .team-section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            background-color: var(--accent);
+            color: #ffffff;
+            font-size: 2.2rem;
+            margin: 0 auto 50px auto;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 12px 40px;
+            border-radius: var(--radius-pill);
+            display: inline-block;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-img-wrapper {
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .team-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 20px;
+        }
+
+        .team-info h3 {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+
+        .team-info .role {
+            color: var(--accent);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .team-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="./css/LOGO(2).png" alt="Flor's Canteen Logo" class="nav-logo">
+            <span class="brand-name">Flor's Canteen</span>
+        </div>
+        <div class="nav-links">
+              <a href="index.html">Home</a>
+            <a href="MenuGeneralView.html">Menu</a>
+             <a href="Order.html">Order</a>
+            <a href="AboutUs.html">About Us</a>
+            <a href="ContactUs.html">Contact Us</a>
+        </div>
+        <div class="nav-actions">
+            <a href="login.html" class="login-btn">Sign-In/Sign-Up</a>
+            <button id="search-btn" class="icon-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+            <button id="theme-switch" class="icon-btn"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <header class="hero-layout section-1 layout-left">
+        <div class="hero-portrait">
+            <img src="./css/LOGO(2).png" alt="Founder Flor">
+        </div>
+        <div class="hero-content">
+            <h1>OUR STORY</h1>
+            <p>
+                Flor’s Canteen started in 2004, when Flordeliza Sarmiento opened a small food business to serve
+                affordable, home-cooked meals to the community. With simple dishes and a focus on quality, it quickly
+                became a favorite spot for students, workers, and nearby residents.                In its early years, the canteen became known for its lutong-bahay meals—warm, familiar, and
+                budget-friendly. Customers often say that the food tastes different in a good way—unique compared to
+                other nearby canteens. Because of this, many keep coming back and recommend it to others.    Now, after 22 years since it first opened, Flor’s Canteen continues to thrive. From 2004 up to now, it
+                remains a simple yet well-loved canteen, known for its unique flavors and loyal customers that span
+                generations.
+            </p>
+        </div>
+    </header>
+    <div class="mission-vision-container">
+        <div class="mv-box">
+            <h3>MISSION</h3>
+            <div class="pill-content">
+                <p>To provide the community with delicious, high-quality, and affordable home-cooked meals that bring
+                    warmth to every customer.</p>
+            </div>
+        </div>
+
+        <div class="mv-box">
+            <h3>VISION</h3>
+            <div class="pill-content">
+                <p>To be the leading provider of authentic Filipino comfort food, recognized for our commitment to
+                    quality, affordability, and community spirit.</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <section class="team-section">
+        <h2 class="section-title">Meet Our Team</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-img-wrapper">
+                    <img src="./css/LOGO(2).png" alt="Flordeliza Sarmiento">
+                </div>
+                <div class="team-info">
+                    <h3>Flordeliza Sarmiento</h3>
+                    <span class="role">Founder & CEO</span>
+                    <p>The heart of Flor's Canteen, bringing home-cooked joy since 2000.</p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-img-wrapper">
+                    <img src="https://preview.redd.it/what-is-your-opinion-of-live-action-sanji-v0-e7cp59h0dwlb1.png?width=640&crop=smart&auto=webp&s=880b091faab7e3ebc11fdb47ed4e36ae1c73b69c" alt="Vinsmoke San">
+                </div>
+                <div class="team-info">
+                    <h3>Vinsmoke San</h3>
+                    <span class="role">Manager</span>
+                    <p>Ensuring every guest receives exceptional service and warm hospitality.</p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-img-wrapper">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlePv43-SC00NLYMuH77Fze-rS9l6pPs88aQ&s" alt="Chef Antonio">
+                </div>
+                <div class="team-info">
+                    <h3>Chef Antonio</h3>
+                    <span class="role">Head Chef</span>
+                    <p>Master of Filipino flavors and the secret behind our signature dishes.</p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-img-wrapper">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy0SpTkgLOAR_yfIYkyRekoO1FI8mU7zbbcw&s" alt="Ricardo Dalisay">
+                </div>
+                <div class="team-info">
+                    <h3>Ricardo Dalisay</h3>
+                    <span class="role">Delivery Lead</span>
+                    <p>Getting your favorite meals to your doorstep hot and on time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-box">
+                <div class="footer-logo">
+                    <img src="./css/LOGO(2).png" alt="Flor's Canteen Logo">
+                    <span class="footer-logo-text">Flor's Canteen</span>
+                </div>
+                <p class="brand-desc">Serving home-cooked Filipino favorites since 2000. Quality taste in every bite.
+                </p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="MenuGeneralView.html">Menu</a></li>
+                    <li><a href="Order.html">Order</a></li>
+                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-box">
+                <h3>Contact Us</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>1165 Morong St. Tondo, Manila</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+123 456 789</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>sarmientoflordeliza125@gg</p>
+                </div>
+            </div>
+
+            <div class="footer-box">
+                <h3>Operating Hours</h3>
+                <div class="hour-pill"><span>Monday - Friday</span><span>7am - 5pm</span></div>
+                <div class="hour-pill"><span>Saturday</span><span>7am - 4pm</span></div>
+                <div class="hour-pill"><span>Sunday</span><span>Closed</span></div>
+            </div>
+
+        </div>
+        <div class="bottom-bar">
+            <p>&copy; 2026 Flor's Canteen. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeSwitch = document.getElementById('theme-switch');
+        const icon = themeSwitch.querySelector('i');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeSwitch.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            isDark ? icon.classList.replace('fa-moon', 'fa-sun') : icon.classList.replace('fa-sun', 'fa-moon');
+        });
+    </script>
+</body>
+
+</html>
