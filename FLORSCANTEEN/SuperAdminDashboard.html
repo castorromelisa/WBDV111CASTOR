@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin | Super Admin Dashboard</title>
+    <link rel="stylesheet" href="./css/superadmin.css">
+    <style>
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .data-card,
+        .stat-pill,
+        .graph-container,
+        .performance-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--radius-card);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        /* Specific Card Accents */
+        .data-card.financial {
+            border-top: 4px solid var(--primary);
+        }
+
+        .data-card.usage {
+            border-top: 4px solid var(--accent);
+        }
+
+        .data-card.alert {
+            border-top: 4px solid var(--danger);
+        }
+
+        .label {
+            display: block;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .value {
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        .value.large {
+            font-size: 2.2rem;
+            color: var(--accent);
+        }
+
+        /* --- 6. Grids & Charts --- */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+.chart-wrapper {
+    position: relative;
+    width: 100%;
+    height: 280px; /* Standardized height for all charts */
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: visible; /* Allows tooltips or labels to pop out */
+}
+
+        /* Order Summary Details */
+        .order-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 1rem;
+        }
+
+        .order-item {
+            background: rgba(0, 0, 0, 0.03);
+            padding: 12px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        body.dark-mode .order-item {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- 7. Lists & Tags --- */
+        .inventory-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .inventory-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tag {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .tag.warning {
+            background: #fff9db;
+            color: #f08c00;
+        }
+
+        .tag.danger {
+            background: #fff5f5;
+            color: #fa5252;
+        }
+
+        .tag.success {
+            background: #ebfbee;
+            color: #40c057;
+        }
+
+        .item-performance-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* Status Colors */
+        .status.completed {
+            color: var(--success);
+        }
+
+        .status.pending {
+            color: var(--accent);
+        }
+
+        .status.cancelled {
+            color: var(--danger);
+        }
+
+        .action-link {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        /* Container for the boxes to sit side-by-side */
+        .item-performance-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Individual Box Styling */
+        .performance-box {
+            background: var(--card-bg);
+            /* Uses white or dark grey based on mode */
+            padding: 1.5rem;
+            border-radius: var(--radius-card);
+            /* Matches your 16px/20px radius */
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        /* Hover effect for dark mode neon style */
+        body.dark-mode .performance-box:hover {
+            box-shadow: 0 0 15px rgba(230, 126, 34, 0.3);
+            border-color: var(--accent);
+        }
+
+        /* Label Styling */
+        .performance-box .label {
+            display: block;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        /* List Styling */
+        .performance-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+
+
+        /* Specific styling for 'Least Ordered' to differentiate it slightly */
+        .performance-box:last-child li strong {
+            color: var(--text-light);
+            /* Subtler color for the bottom items */
+        }
+
+        /* The Plot Area */
+        .css-scatter-chart {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            /* Adjust height as needed */
+            border-left: 2px solid var(--border);
+            border-bottom: 2px solid var(--border);
+            margin: 20px 0;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 25% 25%;
+            /* Creates a background grid */
+        }
+
+        /* The Data Point */
+        .point {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            /* Position based on CSS Variables */
+            left: var(--x);
+            bottom: var(--y);
+            transform: translate(-50%, 50%);
+            /* Centers the dot on the coordinate */
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+            z-index: 2;
+        }
+
+        /* Hover Effect with Tooltip */
+        .point:hover {
+            transform: translate(-50%, 50%) scale(1.5);
+            background-color: #fff;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        /* Tooltip using the data-label attribute */
+        .point:hover::after {
+            content: attr(data-label);
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-color);
+            color: var(--bg-color);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+        }
+
+        /* Dark Mode Adjustment */
+        body.dark-mode .point {
+            background-color: #fff;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+
+        body.dark-mode .css-scatter-chart {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+
+        /* The Pie Chart Circle */
+        .css-pie-chart {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            /* Uses the variable passed from HTML */
+            background: conic-gradient(var(--data));
+            margin: 20px auto;
+            position: relative;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .css-pie-chart:hover {
+            transform: scale(1.05);
+        }
+
+        /* Optional: Turn it into a Donut Chart */
+        .css-pie-chart::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 50%;
+            background-color: var(--card-bg);
+            /* Matches your background */
+            border-radius: 50%;
+        }
+
+        /* Legend Styling */
+        .pie-legend {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .pie-legend li {
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-color);
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        /* Dark Mode Adjustments */
+        body.dark-mode .css-pie-chart {
+            border: 2px solid var(--border);
+        }
+
+        /* The Chart Circle */
+        .css-pie-chart {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            /* The magic line that creates the slices */
+            background: conic-gradient(var(--data));
+            margin: 0 auto;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+
+        /* Turns it into a Donut Chart */
+        .donut-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            background-color: var(--card-bg);
+            /* Matches your card background */
+            border-radius: 50%;
+        }
+
+        /* Legend Styling */
+        .pie-legend {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-color);
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        /* Legend Colors */
+        .male {
+            background-color: #3498db;
+        }
+
+        .female {
+            background-color: #9b59b6;
+        }
+
+        .other {
+            background-color: #bdc3c7;
+        }
+
+        /* Dark mode fix: ensure center matches the dark theme */
+        body.dark-mode .donut-center {
+            background-color: var(--card-bg);
+        }
+
+        /* --- Device Usage Styles --- */
+        .css-device-stats {
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stat-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            color: var(--text-color);
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 12px;
+            background: var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+        }
+
+        .progress-fill.secondary {
+            background: #34495e;
+            /* Desktop color */
+        }
+
+        /* --- Donut Chart Styles --- */
+        .css-donut-chart {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: conic-gradient(var(--data));
+            margin: 10px auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .donut-hole {
+            width: 65%;
+            height: 65%;
+            background: var(--card-bg);
+            /* Automatically matches theme */
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .donut-val {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .donut-sub {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        /* Dark Mode Overrides */
+        body.dark-mode .progress-track {
+            background: #333;
+        }
+
+        body.dark-mode .donut-hole {
+            background: var(--card-bg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo-section">
+                <img src="./css/LOGO(2).png" alt="Logo">
+                <span>Flor's Canteen</span>
+            </div>
+            <nav class="nav-links">
+                <a href="SuperAdminDashboard.html" class="active">
+                    <img src="./picture/shield.png" alt="Dashboard" class="nav-icon-img">
+                    Super Admin Dashboard
+                </a>
+                <a href="SuperAdminCreationAccount.html">
+                    <img src="./picture/list.png" alt="Accounts" class="nav-icon-img">
+                    Creation Account
+                </a>
+
+                <div class="nav-spacer"></div>
+
+                <a href="SuperAdminProfile.html">
+                    <img src="./picture/user.png" alt="Profile" class="nav-icon-img">
+                    Profile
+                </a>
+                <a href="login.html">
+                    <img src="./picture/sign-out.png" alt="Logout" class="nav-icon-img">
+                    Log Out
+                </a>
+            </nav>
+            <div class="sidebar-help">
+                <a href="#">
+                    <img src="./picture/info.png" alt="Help" class="nav-icon-img">
+                    Help
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="welcome-text">
+                    <h1>Super Admin Dashboard</h1>
+                    <p>Welcome Back, Flordeliza Sarmiento</p>
+                </div>
+                <div class="header-actions">
+                    <div class="profile-pill">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alfredo" alt="User">
+                        <span>Flordeliza Sarmiento <p>@Superadmin </p> </span>
+                    </div>
+                    <button class="icon-btn" aria-label="Notifications">
+                        <img src="./picture/bell.png" alt="Notifications" class="image-to-white">
+                    </button>
+
+                    <button class="icon-btn" aria-label="Chat">
+                        <img src="./picture/chat.png" alt="Chat" class="image-to-white">
+                    </button>
+
+                    <button class="icon-btn theme-toggle" id="theme-switch" aria-label="Toggle Theme">
+                        <img src="./picture/moon.png" alt="Theme" class="image-to-white">
+                    </button>
+                </div>
+            </header>
+            <div class="content-padding">
+                <div class="content-padding">
+                    <h2 class="section-title">User Overview & Analytics</h2>
+                    <div class="stats-row">
+                        <div class="stat-pill">
+                            <span class="label">Total Platform Users</span>
+                            <span class="value">500</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="label">Active Users (Daily)</span>
+                            <span class="value">450</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="label">Inactive Users</span>
+                            <span class="value">30</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="label">Banned / Suspended</span>
+                            <span class="value">20</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="label">New Users (Today)</span>
+                            <span class="value">15</span>
+                        </div>
+                        <div class="data-card usage">
+                            <span class="label">User Retention Rate</span>
+                            <span class="value">85%</span>
+                        </div>
+                        <div class="data-card usage">
+                            <span class="label">Avg. Time on Website</span>
+                            <span class="value">12m 45s</span>
+                        </div>
+                        <div class="data-card usage">
+                            <span class="label">Bounce Rate</span>
+                            <span class="value">12%</span>
+                        </div>
+                    </div>
+
+                    <h2 class="section-title">Sales & Revenue Performance</h2>
+                    <div class="stats-row">
+                        <div class="data-card financial">
+                            <span class="label">Total Revenue</span>
+                            <span class="value">₱185,200.00</span>
+                        </div>
+                        <div class="data-card financial">
+                            <span class="label">Monthly Sales</span>
+                            <span class="value">₱120,500.00</span>
+                        </div>
+                        <div class="data-card financial">
+                            <span class="label">Total Weekly Sales</span>
+                            <span class="value">₱20,258</span>
+                        </div>
+                        <div class="data-card financial">
+                            <span class="label">Average Daily Sales</span>
+                            <span class="value">₱5,064.00</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="label">Sales Growth</span>
+                            <span class="value text-success">+12.5%</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="label">Avg. Order Value</span>
+                            <span class="value">₱245.00</span>
+                        </div>
+                    </div>
+
+                    <h2 class="section-title">Operations Monitoring</h2>
+                    <div class="stats-row">
+                        <div class="stat-pill">
+                            <span class="label">Total Orders</span>
+                            <span class="value">1,240</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="label">Orders Today</span>
+                            <span class="value">42</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="label">Pending Orders</span>
+                            <span class="value warning">8</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="label">Completed Orders</span>
+                            <span class="value">1,180</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="label">Cancelled / Refunds</span>
+                            <span class="value danger">12</span>
+                        </div>
+                        <div class="data-card">
+                            <span class="label">Total Reservations</span>
+                            <span class="value">1,000</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="label">Today's Reservations</span>
+                            <span class="value">15</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="label">Avg. Delivery Time</span>
+                            <span class="value">28m</span>
+                        </div>
+                    </div>
+                    <h2 class="section-title">Product & Food Insights</h2>
+                    <div class="stats-row">
+                        <div class="data-card">
+                            <span class="label">Most Ordered Item</span>
+                            <span class="value">Pork Sisig</span>
+                        </div>
+                        <div class="data-card">
+                            <span class="label">Best-Selling Category</span>
+                            <span class="value">Chicken Curry</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="label">Low Stock Items</span>
+                            <span class="value danger">3</span>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="label">Out of Stock</span>
+                            <span class="value danger">1</span>
+                        </div>
+                    </div>
+                    <div class="content-padding">
+                        <h2 class="section-title">Visual Analytics & Insights</h2>
+                        <div class="dashboard-grid">
+                            <div class="graph-container">
+                                <h3>Data Distribution (Scatter Plot)</h3>
+                                <div class="chart-wrapper">
+                                    <div class="css-scatter-chart">
+                                        <div class="point" style="--x: 10%; --y: 20%;" data-label="Point A"></div>
+                                        <div class="point" style="--x: 30%; --y: 50%;" data-label="Point B"></div>
+                                        <div class="point" style="--x: 50%; --y: 80%;" data-label="Point C"></div>
+                                        <div class="point" style="--x: 70%; --y: 40%;" data-label="Point D"></div>
+                                        <div class="point" style="--x: 90%; --y: 90%;" data-label="Point E"></div>
+
+                                        <div class="grid-line horizontal" style="bottom: 25%"></div>
+                                        <div class="grid-line horizontal" style="bottom: 50%"></div>
+                                        <div class="grid-line horizontal" style="bottom: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="graph-container">
+                                <h3>User Status Distribution</h3>
+                                <div class="chart-wrapper">
+                                    <div class="css-pie-chart"
+                                        style="--data: #2ecc71 0% 70%, #95a5a6 70% 90%, #e74c3c 90% 100%;">
+                                    </div>
+
+                                    <ul class="pie-legend">
+                                        <li><span class="dot" style="background: #2ecc71"></span> Active (70%)</li>
+                                        <li><span class="dot" style="background: #95a5a6"></span> Inactive (20%)</li>
+                                        <li><span class="dot" style="background: #e74c3c"></span> Banned (10%)</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="graph-container">
+                                <h3>Gender Distribution</h3>
+                                <div class="chart-wrapper">
+                                    <div class="css-pie-chart"
+                                        style="--data: #3498db 0% 45%, #9b59b6 45% 95%, #bdc3c7 95% 100%;">
+                                        <div class="donut-center"></div>
+                                    </div>
+
+                                    <div class="pie-legend">
+                                        <div class="legend-item"><span class="dot male"></span> Male (45%)</div>
+                                        <div class="legend-item"><span class="dot female"></span> Female (50%)</div>
+                                        <div class="legend-item"><span class="dot other"></span> Unknown (5%)</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="graph-container">
+                                <h3>Device Usage (Mobile vs Desktop)</h3>
+                                <div class="chart-wrapper">
+                                    <div class="css-device-stats">
+                                        <div class="stat-item">
+                                            <div class="stat-info"><span>Mobile</span><span>72%</span></div>
+                                            <div class="progress-track">
+                                                <div class="progress-fill" style="width: 72%;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="stat-item">
+                                            <div class="stat-info"><span>Desktop</span><span>28%</span></div>
+                                            <div class="progress-track">
+                                                <div class="progress-fill secondary" style="width: 28%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="graph-container">
+                                <h3>Delivery vs Pickup Ratio</h3>
+                                <div class="chart-wrapper">
+                                    <div class="css-donut-chart" style="--data: #1abc9c 0% 75%, #e67e22 75% 100%;">
+                                        <div class="donut-hole">
+                                            <span class="donut-val">75%</span>
+                                              <span class="donut-sub">Pick up</span>
+                                            <span class="donut-sub">Delivery</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="data-card">
+                                <h3><i class="ph ph-star"></i> Feedback & Ratings</h3>
+                                <span class="value large">4.9 / 5.0</span>
+                                <div class="stars">⭐⭐⭐⭐⭐</div>
+                                <p class="sub-label">Most Reviewed: <strong>Sweet & Sour Lapu-Lapu</strong></p>
+                                <button class="action-link">Read 120 Reviews</button>
+                            </div>
+                            <div class="data-card">
+                                <h3><i class="ph ph-package"></i> Inventory Management</h3>
+                                <ul class="inventory-list">
+                                    <li><span>Rice (Sacks)</span> <span class="tag warning">5 Left</span></li>
+                                    <li><span>Cooking Oil</span> <span class="tag danger">Low Stock</span></li>
+                                    <li><span>Chicken (kg)</span> <span class="tag success">25kg</span></li>
+                                </ul>
+                                <button class="action-link">View Restock History</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="stats-row">
+                    <div class="data-card alert">
+                        <span class="label">System Alerts</span>
+                        <span class="value small">2 Low Stock | 1 Delayed Delivery</span>
+                    </div>
+                    <div class="data-card feedback">
+                        <span class="label">Recent Feedback Summary</span>
+                        <span class="value small">4.9/5 Stars (Average)</span>
+                    </div>
+                </div>
+                <div class="item-performance-row">
+                    <div class="performance-box">
+                        <span class="label">Most Ordered Items</span>
+                        <ul>
+                            <li><strong>1.</strong> Sweet and Sour Lapu-Lapu</li>
+                            <li><strong>2.</strong> Bicol Express</li>
+                        </ul>
+                    </div>
+                    <div class="performance-box">
+                        <span class="label">Least Ordered Items</span>
+                        <ul>
+                            <li><strong>1.</strong> Ginisang Sayote</li>
+                            <li><strong>2.</strong> Ginisang Patola</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <footer class="dashboard-footer">
+                <p>&copy; 2026 Flor's Canteen | All rights reserved | Designed by Romelisa Patricia T. Castor</p>
+            </footer>
+        </main>
+
+    </div>
+
+
+
+    <script>
+        function addPoint(xPercent, yPercent, label) {
+            const chart = document.querySelector('.css-scatter-chart');
+            const dot = document.createElement('div');
+            dot.className = 'point';
+            dot.style.setProperty('--x', xPercent + '%');
+            dot.style.setProperty('--y', yPercent + '%');
+            dot.setAttribute('data-label', label);
+            chart.appendChild(dot);
+        }
+
+    </script>
+    <script src="./js/theme.js"></script>
+</body>
+
+</html>

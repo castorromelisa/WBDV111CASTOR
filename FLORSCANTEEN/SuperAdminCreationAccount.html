@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin Dashboard | Creation Account | Flor's Canteen</title>
+    <link rel="stylesheet" href="./css/superadmin.css">
+    <style>
+        /* --- Account Information Card & Form --- */
+        .account-info-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--radius-card);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .account-info-card h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            color: var(--text-color);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            border-color: var(--accent);
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn-confirm {
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-cancel {
+            background: transparent;
+            color: var(--text-light);
+            padding: 12px 30px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* --- User Table Styling --- */
+        .table-card {
+            margin-top: 2.5rem;
+            overflow-x: auto;
+            background: var(--card-bg);
+            border-radius: var(--radius-card);
+            padding: 1rem;
+        }
+
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .user-table th {
+            padding: 12px;
+            border-bottom: 2px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .user-table td {
+            padding: 15px 12px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-info img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+
+        .status {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .status.active {
+            background: #e3fcf7;
+            color: #00a389;
+        }
+
+        .status.inactive {
+            background: #fff1f0;
+            color: #f5222d;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 8px;
+        }
+
+        .pill-btn {
+            padding: 5px 12px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            background: transparent;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .pill-btn.edit:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .pill-btn.delete:hover {
+            border-color: #f5222d;
+            color: #f5222d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+      <aside class="sidebar">
+            <div class="logo-section">
+                <img src="./css/LOGO(2).png" alt="Logo">
+                <span>Flor's Canteen</span>
+            </div>
+            <nav class="nav-links">
+                <a href="SuperAdminDashboard.html">
+                    <img src="./picture/shield.png" alt="Dashboard" class="nav-icon-img">
+                    Super Admin Dashboard
+                </a>
+                <a href="SuperAdminCreationAccount.html" class="active">
+                    <img src="./picture/list.png" alt="Accounts" class="nav-icon-img">
+                    Creation Account
+                </a>
+
+                <div class="nav-spacer"></div>
+
+                <a href="SuperAdminProfile.html">
+                    <img src="./picture/user.png" alt="Profile" class="nav-icon-img">
+                    Profile
+                </a>
+                <a href="login.html">
+                    <img src="./picture/sign-out.png" alt="Logout" class="nav-icon-img">
+                    Log Out
+                </a>
+            </nav>
+            <div class="sidebar-help">
+                <a href="#">
+                    <img src="./picture/info.png" alt="Help" class="nav-icon-img">
+                    Help
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Section -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="welcome-text">
+                    <h1>Creation Account</h1>
+                    <p>Welcome Back, Flordeliza Sarmiento</p>
+                </div>
+                <div class="header-actions">
+                    <div class="profile-pill">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alfredo" alt="User">
+                           <span>Flordeliza Sarmiento <p>@Superadmin </p> </span>
+                    </div>
+                        <button class="icon-btn" aria-label="Notifications">
+                        <img src="./picture/bell.png" alt="Notifications" class="image-to-white">
+                    </button>
+
+                    <button class="icon-btn" aria-label="Chat">
+                        <img src="./picture/chat.png" alt="Chat" class="image-to-white">
+                    </button>
+
+                    <button class="icon-btn theme-toggle" id="theme-switch" aria-label="Toggle Theme">
+                        <img src="./picture/moon.png" alt="Theme" class="image-to-white">
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-padding">
+                <!-- Account Form -->
+                <div class="account-info-card">
+                    <h2>Account Information</h2>
+                    <form class="account-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="profilePic"><i class="ph ph-user-circle"></i> Profile Picture</label>
+                                <input type="file" id="profilePic" accept="image/*">
+                            </div>
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" placeholder="Enter Full Name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="Enter Email Address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" placeholder="09XX XXX XXXX">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" placeholder="e.g. jdoe_admin" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="accountStatus">Account Status</label>
+                                <div class="select-wrapper">
+                                    <select id="accountStatus" name="accountStatus">
+                                        <option value="new" selected>New</option>
+                                        <option value="active">Active</option>
+                                        <option value="inactive">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="form-row">
+                            <div class="form-group">
+                                <label for="birthday"><i class="ph ph-cake"></i> Birthday</label>
+                                <input type="date" id="birthday" name="birthday">
+                            </div>
+                            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" placeholder="0">
+            </div>
+                           
+                            
+                        </div>
+
+                        <div class="form-row" style="grid-template-columns: 1fr 1fr 0.6fr;">
+                            
+                            <div class="form-group">
+                                <label for="nationality">Nationality</label>
+                                <input type="text" id="nationality" value="Filipino">
+                            </div>
+                            <div class="form-group">
+                                <label for="role">User Role</label>
+                                <div class="select-wrapper">
+                                    <select id="role" name="role">
+                                        <option value="staff">Staff</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row single">
+                            <div class="form-group">
+                                <label for="address">Home Address</label>
+                                <input type="text" id="address" placeholder="House No., Street, Brgy, City">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" placeholder="••••••••">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" id="confirmPassword" placeholder="••••••••">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-confirm">Confirm</button>
+                            <button type="reset" class="btn-cancel">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- User Table -->
+                <div class="table-card">
+                    <table class="user-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="user-info">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User">
+                                        <span>Juan Dela Cruz</span>
+                                    </div>
+                                </td>
+                                <td>juan.dev@gmail.com</td>
+                                <td>Staff</td>
+                                <td><span class="status inactive">Inactive</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="pill-btn edit">edit</button>
+                                        <button class="pill-btn delete">delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="user-info">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sanji" alt="User">
+                                        <span>Sanji</span>
+                                    </div>
+                                </td>
+                                <td>Sanji@gmail.com</td>
+                                <td>Staff</td>
+                                <td><span class="status active">Active</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="pill-btn edit">edit</button>
+                                        <button class="pill-btn delete">delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Footer Widgets -->
+                <div class="dashboard-grid"
+                    style="margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div class="data-card">
+                        <h3><i class="ph ph-clock-counter-clockwise"></i> Admin Activity Logs</h3>
+                        <ul class="activity-list" style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 1rem;">
+                                <span class="time" style="color: var(--text-light); font-size: 0.8rem;">10:45 AM</span>
+                                <p><strong>Alfredo</strong> updated role for <em>Juan Dela Cruz</em></p>
+                            </li>
+                        </ul>
+                        <button class="action-link">View Full History</button>
+                    </div>
+
+                    <div class="data-card alert-card">
+                        <h3><i class="ph ph-warning-octagon"></i> Security Alerts</h3>
+                        <div class="alert-item danger">
+                            <i class="ph ph-shield-warning"></i>
+                            <div>
+                                <strong>Suspicious Activity</strong>
+                                <p>Multiple failed logins from IP: 192.168.1.45</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="dashboard-footer"
+                    style="margin-top: 2rem; text-align: center; color: var(--text-light);">
+                    <p>&copy; 2026 Flor's Canteen | All rights reserved | Designed by Romelisa Patricia T. Castor</p>
+                </footer>
+            </div>
+        </main>
+    </div>
+    <script src="./js/theme.js"></script>
+</body>
+
+</html>

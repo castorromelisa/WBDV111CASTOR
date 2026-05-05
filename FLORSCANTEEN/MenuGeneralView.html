@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Flor's Canteen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        /* --- Hero Styling --- */
+        .hero {
+            height: 300px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('j');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="./css/LOGO.png" alt="Flor's Canteen Logo" class="nav-logo">
+            <span class="brand-name">Flor's Canteen</span>
+        </div>
+
+        <div class="nav-links">
+             <a href="index.html">Home</a>
+            <a href="MenuGeneralView.html">Menu</a>
+             <a href="Order.html">Order</a>
+            <a href="AboutUs.html">About Us</a>
+            <a href="ContactUs.html">Contact Us</a>
+        </div>
+
+        <div class="nav-actions">
+            <a href="login.html" class="login-btn">Sign-In/Sign-Up</a>
+            <button id="search-btn" class="icon-btn" aria-label="Search">
+                <img src="./picture/magnifying-glass.png" alt="Search" class="btn-icon-img">
+            </button>
+
+            <button id="theme-switch" class="icon-btn theme-toggle" aria-label="Toggle Theme">
+                <img src="./picture/moon.png" alt="Toggle Theme" class="btn-icon-img">
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>MENU</h1>
+    </header>
+
+    <div class="menu-controls">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search for your favorite food...">
+            <button class="search-btn-main">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </div>
+        <div class="filter-tabs">
+            <button class="tab-btn active" data-category="special">Special</button>
+            <button class="tab-btn" data-category="best-seller">Best Seller</button>
+            <button class="tab-btn" id="weekly-toggle">Weekly</button>
+        </div>
+        <div id="weekly-nav" class="filter-tabs secondary">
+            <button class="tab-btn" data-category="Everyday">Everyday</button>
+            <button class="tab-btn" data-category="monday">Monday</button>
+            <button class="tab-btn" data-category="tuesday">Tuesday</button>
+            <button class="tab-btn" data-category="wednesday">Wednesday</button>
+            <button class="tab-btn" data-category="thursday">Thursday</button>
+            <button class="tab-btn" data-category="friday">Friday</button>
+            <button class="tab-btn" data-category="saturday">Saturday</button>
+        </div>
+
+        <div class="menu-grid-layout">
+
+            <div class="food-card" data-category="special">
+                <div class="card-img-placeholder">
+                    <img src="https://philippinesfoodrecipes.wordpress.com/wp-content/uploads/2018/08/crispy-bicol-express.jpg"
+                        alt="Bicol Express" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Bicol Express</h3>
+                    <p class="description">Creamy coconut milk meets spicy chili peppers and tender pork.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.6)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="special">
+                <div class="card-img-placeholder">
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCZNA_TDMjrA4lWoB6UxJX1YOoH83qxXHjbw&s">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Binagoongang Baboy</h3>
+                    <p class="description">Crispy-tender pork sautéed in premium shrimp paste. It’s a salty, savory
+                        explosion that demands extra rice!</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.5)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="special">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC2akC_q3uxNIonB1ayuje_IJEGtILGmG0Aw&s"
+                        alt="Bicol Express" class="food-image">
+                    <span class="price-tag">₱80</span>
+                </div>
+                <div class="card-body">
+                    <h3>Sweet and Sour Lapu-Lapu</h3>
+                    <p class="description">Fresh fish topped with a vibrant, tangy sauce and crunchy bell peppers. A
+                        "fiesta" flavor in every bite.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="special">
+                <div class="card-img-placeholder">
+                    <img src="https://panlasangpinoy.com/wp-content/uploads/2011/05/Ginataang-Puso-ng-Saging-Recipe.jpg"
+                        alt="Bicol Express" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Puso ng Saging with Gata</h3>
+                    <p class="description">FA traditional Filipino favorite. Finely shredded banana blossoms cooked in
+                        rich,
+                        thick coconut cream.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.1)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+            <div class="food-card" data-category="special">
+                <div class="card-img-placeholder">
+                    <img src="https://panlasangpinoy.com/wp-content/uploads/2011/05/Ginataang-Puso-ng-Saging-Recipe.jpg"
+                        alt="Bicol Express" class="food-image">
+                    <span class="price-tag">₱50</span>
+                </div>
+                <div class="card-body">
+                    <h3>Laing</h3>
+                    <p class="description">Authentic shredded taro leaves slow-cooked in coconut milk and spices.
+                        Creamy,
+                        spicy, and purely delicious.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.2)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+            <div class="food-card" data-category="special">
+                <div class="card-img-placeholder">
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU95Hl0_OLdh-w-SKpCSo470rS1nUJY-Ying&s">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Calamares</h3>
+                    <p class="description">Authentic shredded taro leaves slow-cooked in coconut milk and spices.
+                        Creamy,
+                        spicy, and purely delicious.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.2)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+            <div class="food-card" data-category="best-seller">
+                <div class="card-img-placeholder">
+                    <img src="https://i0.wp.com/thecookingpinay.com/wp-content/uploads/2018/07/Nilagang-Baboy-Pork-Stew-_thecookingpinay.jpg?fit=1200%2C900&ssl=1"
+                        alt="Nilagang Ribs Baboy" class="food-image">
+                    <span class="price-tag">₱80</span>
+                </div>
+                <div class="card-body">
+                    <h3>Nilagang Ribs Baboy</h3>
+                    <p class="description">Simple, clean, and comforting. Tender pork ribs and fresh vegetables in a
+                        clear,
+                        hot broth.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.0)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="best-seller">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqBe5o--7cL9QKfKmsbpbfEvdUtpv2Gf2Z6Q&s"
+                        alt="Afritada" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Afritada</h3>
+                    <p class="description">Hearty pork stew with potatoes and carrots, simmered in a thick tomato sauce
+                        that
+                        tastes like home.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.4)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="best-seller">
+                <div class="card-img-placeholder">
+                    <img src="https://cdn.sanity.io/images/f3knbc2s/production/120be357fc8541587d05dcfcfa347e1942684287-2500x1500.jpg?auto=format"
+                        alt="Chicken Curry" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Chicken Curry</h3>
+                    <p class="description">A colorful and aromatic dish. Tender chicken and vegetables slow-cooked in a
+                        mild, golden curry sauce.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.4)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="best-seller">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzoKlmfpKtn04Sf6CDQYEHWj-cT2tiiYjiUg&s"
+                        alt="Sisig" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Sisig</h3>
+                    <p class="description">The king of Filipino pulutan-turned-ulam. Chopped to perfection, savory, and
+                        with
+                        just the right amount of crunch.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="best-seller">
+                <div class="card-img-placeholder">
+                    <img src="https://www.angsarap.net/wp-content/uploads/2023/11/Tinutungang-Dinuguan-Wide.jpg"
+                        alt="Dinuguan" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Dinuguan</h3>
+                    <p class="description">Our "all-time favorite" savory stew. Thick, dark, and perfectly seasoned—best
+                        paired with rice or pancit!</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="best-seller">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAlikc3SichpJjTpNUFvoHyW8si4xFZb_QPg&s"
+                        alt="Beef Steek (Bistek)" class="food-image">
+                    <span class="price-tag">₱80</span>
+                </div>
+                <div class="card-body">
+                    <h3>Beef Steek (Bistek)</h3>
+                    <p class="description">Tender beef slices marinated in soy sauce and calamansi, topped with a
+                        generous
+                        serving of sweet onions.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.6)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+            <div class="food-card" data-category="everyday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvlqktzpf82ikuP5erUrfTNGGj29Vtl-QD_A&s"
+                        alt="Longganisa" class="food-image">
+                    <span class="price-tag">₱35</span>
+                </div>
+                <div class="card-body">
+                    <h3>Longganisa</h3>
+                    <p class="description">Sweet, garlic-infused Filipino sausage. A breakfast favorite served all day.
+                    </p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(5.0)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="everyday">
+                <div class="card-img-placeholder">
+                    <img src="https://kusinasecrets.com/wp-content/uploads/2024/10/u3317447599_httpss.mj_.runNfXYQtA-oR8_Top_down_photo_of_Filipi_b7eafb63-5d9d-49bf-ae07-302c6c469f8b_3.webp"
+                        alt="Manok" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Manok</h3>
+                    <p class="description">Savory fried chicken seasoned with our special house blend of spices.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="everyday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBr6D61vfCrOnkJ7r45bqR4I5_fjPdEMy1Fw&s"
+                        alt="Porkchop" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Porkchop</h3>
+                    <p class="description">Thick-cut, tender pork chop fried to a perfect golden brown crisp.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.9)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="everyday">
+                <div class="card-img-placeholder">
+                    <img src="https://www.angsarap.net/wp-content/uploads/2021/04/Tortang-Talong-Wide.jpg"
+                        alt="Tortang Talong" class="food-image">
+                    <span class="price-tag">₱50</span>
+                </div>
+                <div class="card-body">
+                    <h3>Tortang Talong</h3>
+                    <p class="description">Smoky grilled eggplant omelet. Simple, healthy, and flavorful.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.7)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="everyday">
+                <div class="card-img-placeholder">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Fried_Egg_2.jpg/250px-Fried_Egg_2.jpg"
+                        alt="Egg" class="food-image">
+                    <span class="price-tag">₱15</span>
+                </div>
+                <div class="card-body">
+                    <h3>Egg</h3>
+                    <p class="description">Fried egg with a perfectly runny yolk. The best companion for any meal.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(5.0)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="everyday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb8mHK-yRO7_v27kb4U9VxxUQKzlUYNNyNGg&s"
+                        alt="Pancit Bihon" class="food-image">
+                    <span class="price-tag">₱30</span>
+                </div>
+                <div class="card-body">
+                    <h3>Pancit Bihon</h3>
+                    <p class="description">Traditional stir-fried rice noodles with assorted vegetables.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="everyday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Q8cmyTfp3DgABdN4aRz1X41E3z5flVH03Q&s"
+                        alt="Tuyo" class="food-image">
+                    <span class="price-tag">₱10</span>
+                </div>
+                <div class="card-body">
+                    <h3>Tuyo</h3>
+                    <p class="description">Salted dried fish fried until crispy. Best paired with hot rice.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.9)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="everyday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsWyVuFUXLU_lcnusI9fnmbtXLNgtpJVTc5Q&s"
+                        alt="Daing" class="food-image">
+                    <span class="price-tag">₱50</span>
+                </div>
+                <div class="card-body">
+                    <h3>Daing</h3>
+                    <p class="description">Sun-dried fish marinated in vinegar and garlic, fried until perfectly crispy
+                        and
+                        golden.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(5.0)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+            <div class="food-card" data-category="monday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLExwCVwcldtO9gsSGrsHxIrs6YLIEohaeNQ&s"
+                        alt="Igado" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Igado</h3>
+                    <p class="description">A popular Ilocano dish made from pork tenderloin and liver, sautéed in soy
+                        sauce,
+                        vinegar, and spices.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.9)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="monday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzoKlmfpKtn04Sf6CDQYEHWj-cT2tiiYjiUg&s"
+                        alt="Sisig" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Sisig</h3>
+                    <p class="description">Crispy and savory chopped pork face seasoned with calamansi, onions, and
+                        chili
+                        peppers.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(5.0)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="monday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAlikc3SichpJjTpNUFvoHyW8si4xFZb_QPg&s"
+                        alt="Beef Steak" class="food-image">
+                    <span class="price-tag">₱80</span>
+                </div>
+                <div class="card-body">
+                    <h3>Beef Steak</h3>
+                    <p class="description">Tender beef slices marinated in soy sauce and calamansi, topped with a
+                        generous
+                        amount of onion rings.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="monday">
+                <div class="card-img-placeholder">
+                    <img src="https://i.ytimg.com/vi/J6z-m-hUTy4/maxresdefault.jpg" alt="Atay Balunan"
+                        class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Atay Balunan</h3>
+                    <p class="description">Flavorful chicken liver and gizzard cooked adobo-style, rich in protein and
+                        Filipino spices.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.7)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="monday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQFzViBrLRa_M3l0mcN2anEESSSjVkkM12eA&sL"
+                        alt="Sinigang na Pata" class="food-image">
+                    <span class="price-tag">₱80</span>
+                </div>
+                <div class="card-body">
+                    <h3>Sinigang na Pata</h3>
+                    <p class="description">Sour and savory tamarind-based soup with tender pork hock and various fresh
+                        vegetables.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(5.0)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="monday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSTOfPBLx7vK2vNhqjPhaZxlByrY65PS9MgA&s"
+                        alt="Tinola" class="food-image">
+                    <span class="price-tag">₱80</span>
+                </div>
+                <div class="card-body">
+                    <h3>Tinola</h3>
+                    <p class="description">A healthy ginger-based chicken soup with chayote or papaya and fresh chili
+                        leaves.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.9)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="monday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxG01nHScp37qshcaL5H43JvHmXeEGPtY6_Q&s"
+                        alt="Ginisang Ampalaya" class="food-image">
+                    <span class="price-tag">₱50</span>
+                </div>
+                <div class="card-body">
+                    <h3>Ginisang Ampalaya</h3>
+                    <p class="description">Stir-fried bitter gourd with scrambled eggs, offering a balance of bitterness
+                        and
+                        savory flavor.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.6)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="monday">
+                <div class="card-img-placeholder">
+                    <img src="https://images.food52.com/29ozAQnaQNAyKIa84JUuryft4qA=/636b39b9-c948-48d0-b350-3b12c8500eaa--ginisang-kalabasa-at-sitaw.jpg"
+                        alt="Ginataang Sitaw at Kalabasa" class="food-image">
+                    <span class="price-tag">₱50</span>
+                </div>
+                <div class="card-body">
+                    <h3>Ginataang Sitaw at Kalabasa</h3>
+                    <p class="description">Fresh string beans and squash simmered in thick, creamy, and flavorful
+                        coconut
+                        milk.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+            <div class="food-card" data-category="tuesday">
+                <div class="card-img-placeholder">
+                    <img src="https://yummykitchentv.com/wp-content/uploads/2023/09/pork-belly-steak-recipe.jpg"
+                        alt="Pork Steak" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Pork Steak</h3>
+                    <p class="description">Tender pork slices pan-fried in soy sauce and calamansi, topped with savory
+                        caramelized onions.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.9)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="tuesday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIhabw2nw3jmMn51qC8XXQn1lIgIoHLZB0Q&s"
+                        alt="Tokwa’t Baboy" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Tokwa’t Baboy</h3>
+                    <p class="description">A classic Filipino pairing of crispy fried tofu and tender pork in a savory
+                        soy-vinegar sauce.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="tuesday">
+                <div class="card-img-placeholder">
+                    <img src="https://cdn.sanity.io/images/f3knbc2s/production/120be357fc8541587d05dcfcfa347e1942684287-2500x1500.jpg?auto=format"
+                        alt="Chicken Adobo" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Chicken Curry</h3>
+                    <p class="description">Hearty chicken pieces simmered in a rich, creamy coconut milk curry with
+                        potatoes
+                        and carrots.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.7)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+            <div class="food-card" data-category="tuesday">
+                <div class="card-img-placeholder">
+                    <img src="https://yummykitchentv.com/wp-content/uploads/2021/04/adobong-pusit-recipe.jpg"
+                        alt="Chicken Adobo" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Adobong Pusit</h3>
+                    <p class="description">Fresh squid slow-cooked in its own ink, vinegar, and soy sauce for a deep,
+                        savory
+                        flavor.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(5.0)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+            <div class="food-card" data-category="tuesday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNiaiL02Is5rIHQbV_YBxr0MyXgEL9XfDAIA&s"
+                        alt="Menudo" class="food-image">
+                    <span class="price-tag">₱80</span>
+                </div>
+                <div class="card-body">
+                    <h3>Sinigang na Bangus</h3>
+                    <p class="description">A hearty pork stew with diced potatoes, carrots, and liver in a thick, savory
+                        tomato-based sauce.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.7)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+
+            <div class="food-card" data-category="tuesday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCc_ynIff33tVZ2CokK9OYDEuofxb9EVXMTw&s"
+                        alt="Nilagang Baka" class="food-image">
+                    <span class="price-tag">₱85</span>
+                </div>
+                <div class="card-body">
+                    <h3>Papaitan</h3>
+                    <p class="description">A famous bitter goat or beef innards stew flavored with bile, ginger, and
+                        various
+                        spices.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+            <div class="food-card" data-category="wednesday">
+                <div class="card-img-placeholder">
+                    <img src="https://philippinesfoodrecipes.wordpress.com/wp-content/uploads/2018/08/crispy-bicol-express.jpg?w=560"
+                        alt="Bicol Express" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Bicol Express</h3>
+                    <p class="description">A spicy and creamy Filipino stew made with pork, coconut milk, shrimp paste,
+                        and
+                        plenty of chili.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(5.0)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="wednesday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzoKlmfpKtn04Sf6CDQYEHWj-cT2tiiYjiUg&s"
+                        alt="Sisig" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Sisig</h3>
+                    <p class="description">Chopped pig’s face and ears seasoned with calamansi, onions, and chili
+                        peppers. A
+                        crispy favorite!</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(5.0)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="wednesday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVePsu969isHA7EfLxS30_mpxpS7wANZe4kw&s"
+                        alt="Chicken Broccoli" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Chicken Broccoli</h3>
+                    <p class="description">Stir-fried chicken breast and fresh broccoli florets tossed in a savory
+                        oyster
+                        sauce blend.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="wednesday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoO08bo7koILI8qj2zl6tof8FxI3ZpoI72jw&s"
+                        alt="Sarsiadong Bangus" class="food-image">
+                    <span class="price-tag">₱80</span>
+                </div>
+                <div class="card-body">
+                    <h3>Sarsiadong Bangus</h3>
+                    <p class="description">Fried milkfish cooked in a savory tomato and scrambled egg sauce for a
+                        flavorful
+                        twist.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.7)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="wednesday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST7-OWqwg7OL6hyOQyMxQw0BXoirJj81josQ&s"
+                        alt="Nilagang Ribs Baboy" class="food-image">
+                    <span class="price-tag">₱80</span>
+                </div>
+                <div class="card-body">
+                    <h3>Nilagang Ribs Baboy</h3>
+                    <p class="description">A comforting boiled soup with tender pork ribs, potatoes, and corn in a
+                        clear,
+                        savory broth.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.9)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="wednesday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToU12m0kulfJdmhjUbQ2lWjPgpVGyhwRoSIg&s"
+                        alt="Ginisang Patola" class="food-image">
+                    <span class="price-tag">₱50</span>
+                </div>
+                <div class="card-body">
+                    <h3>Ginisang Patola</h3>
+                    <p class="description">Sautéed sponge gourd with misua noodles or ground meat, providing a light and
+                        comforting taste.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.6)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="wednesday">
+                <div class="card-img-placeholder">
+                    <img src="https://assets.unileversolutions.com/recipes-v2/168293.jpg" alt="Ginisang Sayote"
+                        class="food-image">
+                    <span class="price-tag">₱50</span>
+                </div>
+                <div class="card-body">
+                    <h3>Ginisang Sayote</h3>
+                    <p class="description">Quick stir-fried chayote squash with carrots and garlic, perfect for a
+                        healthy
+                        side dish.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.7)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+            <div class="food-card" data-category="tuesday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVyCR8aCkVbQ4HHarfPRhS5NuIEf6TPXsVCQ&s"
+                        alt="Ginisang Baguio Beans" class="food-image">
+                    <span class="price-tag">₱50</span>
+                </div>
+                <div class="card-body">
+                    <h3>Ginisang Langka</h3>
+                    <p class="description">Young jackfruit simmered in creamy coconut milk with shrimp or pork for extra
+                        flavor.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.7)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+            <div class="food-card" data-category="thursday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvFEA_eQJENCCzHtWAWMK8oatWsrTzW957aQ&s"
+                        alt="Menudo" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Menudo</h3>
+                    <p class="description">A classic Filipino stew with diced pork, liver, potatoes, and carrots in a
+                        rich
+                        tomato-based sauce.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.9)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="thursday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHtYsUSwg3LQ8h-aELW7yXooRNu0lugo0xzg&s"
+                        alt="Binagoongang Baboy" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Binagoongang Baboy</h3>
+                    <p class="description">Crispy pork belly sautéed in shrimp paste (bagoong) with chili peppers for a
+                        salty and spicy kick.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="thursday">
+                <div class="card-img-placeholder">
+                    <img src="https://www.foxyfolksy.com/wp-content/uploads/2014/03/Filipino-Adobo.jpg"
+                        alt="Adobong Manok" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Adobong Manok</h3>
+                    <p class="description">Chicken pieces marinated and braised in soy sauce, vinegar, garlic, and
+                        peppercorns.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(5.0)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="thursday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuUpY3zonUtJIx68b5caSK4ea4CeYBJKOglA&s"
+                        alt="Ginataang Tulingan" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Ginataang Tulingan</h3>
+                    <p class="description">Mackerel tuna simmered in creamy coconut milk and vinegar with eggplant and
+                        green
+                        chilies.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.7)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="thursday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRadIDkTNqTGu69Aq22J-oGl3pWYMuuSXq1sw&s"
+                        alt="Miso Tuna" class="food-image">
+                    <span class="price-tag">₱80</span>
+                </div>
+                <div class="card-body">
+                    <h3>Miso Tuna</h3>
+                    <p class="description">Fresh tuna jaw or belly cooked in a sour tamarind broth with fermented
+                        soybean
+                        paste (miso).</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="thursday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_PEq8uyxjDiustPQZdg-DAr7iz4n1kVUbWQ&s"
+                        alt="Sinigang na Hipon" class="food-image">
+                    <span class="price-tag">₱80</span>
+                </div>
+                <div class="card-body">
+                    <h3>Sinigang na Hipon</h3>
+                    <p class="description">A sour and savory Filipino tamarind soup featuring fresh succulent shrimp and
+                        local vegetables.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.9)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="thursday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfTK4UYgTfnUdDu60rAzCnHUFVzlPGZlBDJw&s"
+                        alt="Ginataang Papaya" class="food-image">
+                    <span class="price-tag">₱50</span>
+                </div>
+                <div class="card-body">
+                    <h3>Ginataang Papaya</h3>
+                    <p class="description">Fresh green papaya cooked in rich coconut milk with ginger and local spices.
+                    </p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.9)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="thursday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqIWPGnKcZU7I2hjQFRhqHbqsjopFAp37AEA&s"
+                        alt="Pakbet" class="food-image">
+                    <span class="price-tag">₱50</span>
+                </div>
+                <div class="card-body">
+                    <h3>Pakbet</h3>
+                    <p class="description">An Ilocano vegetable medley sautéed in shrimp paste, including squash,
+                        eggplant,
+                        and string beans.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.9)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+            <div class="food-card" data-category="friday">
+                <div class="card-img-placeholder">
+                    <img src="https://www.allrecipes.com/thmb/VEO6KuVL7sO4TY91yYkomH_rGxo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/265040-Filipino-Beef-Giniling-ddmfs-4x3-251-1-ab56932dcb8b4fb78bf6c1b56217962b.jpg"
+                        alt="Giniling" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Giniling</h3>
+                    <p class="description">Savory ground pork cooked in a rich tomato sauce with diced potatoes,
+                        carrots,
+                        and green peas.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.7)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="friday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWg2vbVDXkQBDzqTr04EzSr-nWY5q4OlrqTA&s"
+                        alt="Adobong Isaw at Baboy" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Adobong Isaw at Baboy</h3>
+                    <p class="description">A flavorful combination of pork intestines and meat slow-cooked in soy sauce,
+                        vinegar, and garlic.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="friday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa-9ecXVPPmm6Y-ZXKYAuYeY5PzTNlNxX4YA&s"
+                        alt="Afritada" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Afritada</h3>
+                    <p class="description">A hearty Filipino tomato-based stew with tender meat, bell peppers, potatoes,
+                        and
+                        carrots.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.9)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="friday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT780dwVXKAQzDD-5DvNm6LzMvtpDE6Bx5RhQ&s"
+                        alt="Calamares" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Calamares</h3>
+                    <p class="description">Deep-fried battered squid rings, crispy on the outside and tender on the
+                        inside.
+                    </p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(5.0)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="friday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUlqVI1fsMr5_Wr4rgleo2H_KqPZ2jhxCRAA&s"
+                        alt="Paksiw na Galunggong" class="food-image">
+                    <span class="price-tag">₱65</span>
+                </div>
+                <div class="card-body">
+                    <h3>Paksiw na Galunggong</h3>
+                    <p class="description">Round scad fish simmered in vinegar, ginger, and garlic for a perfectly
+                        balanced
+                        sour taste.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.6)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="friday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtIDqRIrqY-dkR7NcpuGzUODccR_85FMQ3og&s"
+                        alt="Nilagang Ribs Baka" class="food-image">
+                    <span class="price-tag">₱80</span>
+                </div>
+                <div class="card-body">
+                    <h3>Nilagang Ribs Baka</h3>
+                    <p class="description">Beef ribs slow-boiled until tender in a clear, savory broth with cabbage and
+                        corn.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.9)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="friday">
+                <div class="card-img-placeholder">
+                    <img src="https://www.pinoycookingrecipes.com/uploads/7/6/7/8/7678114/watermark-2019-01-20-11-20-55_orig.jpg"
+                        alt="Puso ng Saging with Gata" class="food-image">
+                    <span class="price-tag">₱50</span>
+                </div>
+                <div class="card-body">
+                    <h3>Puso ng Saging with Gata</h3>
+                    <p class="description">Finely sliced banana blossoms simmered in rich, creamy coconut milk with
+                        spices.
+                    </p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.7)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="friday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeAa0Il_rbouuycYtD5_qbY1gNRqiRg6vrQQ&s"
+                        alt="Diningding" class="food-image">
+                    <span class="price-tag">₱50</span>
+                </div>
+                <div class="card-body">
+                    <h3>Diningding</h3>
+                    <p class="description">A healthy Ilocano vegetable stew seasoned with fermented fish and topped with
+                        grilled fish.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.6)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+            <div class="food-card" data-category="saturday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkzDdIZLu0AF3BQUkO6pnYEzGjYXy2U6xbtg&s"
+                        alt="Lechon Paksiw" class="food-image">
+                    <span class="price-tag">₱75</span>
+                </div>
+                <div class="card-body">
+                    <h3>Lechon Paksiw</h3>
+                    <p class="description">Succulent roasted pork simmered in a thick, sweet, and tangy liver sauce with
+                        a
+                        hint of vinegar.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(5.0)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="saturday">
+                <div class="card-img-placeholder">
+                    <img src="https://yummykitchentv.com/wp-content/uploads/2023/05/ginataang-hipon-recipe-01.jpg"
+                        alt="Ginataang Hipon" class="food-image">
+                    <span class="price-tag">₱80</span>
+                </div>
+                <div class="card-body">
+                    <h3>Ginataang Hipon</h3>
+                    <p class="description">Fresh shrimp cooked in rich, creamy coconut milk with ginger and local
+                        spices.
+                    </p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="saturday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxxrUiBao_zVOoWjQoFyrzOy8hheBbLX_LhQ&s"
+                        alt="Sinigang na Baboy" class="food-image">
+                    <span class="price-tag">₱80</span>
+                </div>
+                <div class="card-body">
+                    <h3>Sinigang na Baboy</h3>
+                    <p class="description">A comforting sour tamarind soup with pork belly and local vegetables like
+                        okra
+                        and radish.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(5.0)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="saturday">
+                <div class="card-img-placeholder">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQaqAdwGfykW2Es5Es5Xa84l8OXSy_HRjyHw&s"
+                        alt="Chopsuey" class="food-image">
+                    <span class="price-tag">₱50</span>
+                </div>
+                <div class="card-body">
+                    <h3>Chopsuey</h3>
+                    <p class="description">A colorful mix of stir-fried vegetables like cauliflower and carrots in a
+                        light,
+                        savory gravy.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+
+            <div class="food-card" data-category="saturday">
+                <div class="card-img-placeholder">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Laing%2C_Bicolano_dish.jpg"
+                        alt="Laing" class="food-image">
+                    <span class="price-tag">₱50</span>
+                </div>
+                <div class="card-body">
+                    <h3>Laing</h3>
+                    <p class="description">Taro leaves slowly cooked in creamy coconut milk with ginger and spicy chili
+                        peppers.</p>
+                    <div class="rating">⭐⭐⭐⭐⭐ <span>(4.7)</span></div>
+                </div>
+                <div class="card-footer">
+                    <button class="add-item-btn">Order Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-box">
+                <div class="footer-logo">
+                    <img src="./css/LOGO(2).png" alt="Flor's Canteen Logo">
+                    <span class="footer-logo-text">Flor's Canteen</span>
+                </div>
+                <p class="brand-desc">Serving home-cooked Filipino favorites since 2000. Quality taste in every bite.
+                </p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">
+                        <img src="./picture/facebook-logo.png" alt="Facebook" class="social-icon-img">
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <img src="./picture/instagram-logo.png" alt="Instagram" class="social-icon-img">
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <img src="./picture/house.png" class="image-to-white"> Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="MenuGeneralView.html">
+                            <img src="./picture/bowl-food.png" alt="Menu" class="image-to-white"> Menu
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Order.html">
+                            <img src="./picture/list.png" alt="Order" class="image-to-white"> Order
+                        </a>
+                    </li>
+                    <li>
+                        <a href="AboutUs.html">
+                            <img src="./picture/info.png" alt="About" class="image-to-white"> About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ContactUs.html">
+                            <img src="./picture/phone.png" alt="Contact" class="image-to-white"> Contact Us
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-box">
+                <h3>Contact Us</h3>
+                <div class="contact-item">
+                    <img src="./picture/map-trifold.png" alt="Location" class="image-to-white">
+                    <p>1165 Morong St. Tondo, Manila</p>
+                </div>
+                <div class="contact-item">
+                    <img src="./picture/phone-call.png" alt="Phone" class="image-to-white">
+                    <p>+123 456 789</p>
+                </div>
+                <div class="contact-item">
+                    <img src="./picture/envelope.png" alt="Email" class="image-to-white">
+                    <p>sarmientoflordeliza125@gg</p>
+                </div>
+            </div>
+
+            <div class="footer-box">
+                <h3>Operating Hours</h3>
+                <div class="hour-pill"><span>Monday - Friday</span><span>7am - 5pm</span></div>
+                <div class="hour-pill"><span>Saturday</span><span>7am - 4pm</span></div>
+                <div class="hour-pill"><span>Sunday</span><span>Closed</span></div>
+            </div>
+
+        </div>
+        <div class="bottom-bar">
+            <p>&copy; 2026 Flor's Canteen. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="./js/generalmenu.js"></script>
+   
+     <script src="./js/theme.js"></script>
+</body>
+
+</html>

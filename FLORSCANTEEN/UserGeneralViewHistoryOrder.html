@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiona Frost Dashboard | Order History</title>
+    <link rel="stylesheet" href="./css/UserView.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo-section">
+                <img src="./css/LOGO(2).png" alt="Logo">
+                <span>Flor's Canteen</span>
+            </div>
+            <nav class="nav-links">
+                <a href="UserGeneralViewMenu.html">
+                    <img src="./picture/bowl-food.png" alt="Menu" class="nav-icon-img"> Menu
+                </a>
+                <a href="UserGeneralViewOrder.html">
+                    <img src="./picture/list.png" alt="Order" class="nav-icon-img"> Order
+                </a>
+                <a href="UserGeneralViewHistoryOrder.html" class="active">
+                    <img src="./picture/clock-counter-clockwise.png" alt="History" class="nav-icon-img"> Order History
+                </a>
+                <a href="UserGeneralViewFeedback.html">
+                    <img src="./picture/star.png" alt="Feedback" class="nav-icon-img"> Feedback
+                </a>
+
+                <div class="nav-spacer"></div>
+
+                <a href="UserGeneralViewProfile.html">
+                    <img src="./picture/user.png" alt="Profile" class="nav-icon-img"> Profile
+                </a>
+                <a href="login.html">
+                    <img src="./picture/sign-out.png" alt="Logout" class="nav-icon-img"> Log Out
+                </a>
+            </nav>
+            <div class="sidebar-help">
+                <a href="#">
+                    <img src="./picture/info.png" alt="Help" class="nav-icon-img"> Help
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="welcome-text">
+                    <p>Welcome Back, Fiona Frost</p>
+                    <h1>Delicious Deals Await!</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="profile-pill">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alfredo" id="header-avatar"
+                            alt="User">
+                        <span>Fiona Frost <p>@user</p></span>
+                    </div>
+                    <button class="icon-btn" aria-label="Notifications">
+                        <img src="./picture/bell.png" alt="Notifications" class="image-to-white">
+                    </button>
+
+                    <button class="icon-btn" aria-label="Search">
+                        <img src="./picture/magnifying-glass.png" alt="Search" class="image-to-white">
+                    </button>
+
+                    <button class="icon-btn" aria-label="Menu">
+                        <img src="./picture/list.png" alt="Menu" class="image-to-white">
+                    </button>
+
+                    <button class="icon-btn theme-toggle" id="theme-switch" aria-label="Toggle Theme">
+                        <img src="./picture/moon.png" alt="Theme" class="image-to-white">
+                    </button>
+                </div>
+            </header>
+            <section class="hero-banner">
+                <h1>ORDER HISTORY</h1>
+            </section>
+
+            <section class="history-section">
+                <div class="history-header">
+                    <h2>Latest Orders</h2>
+                    <div class="history-filters">
+                        <span>Last Week</span>
+                        <span>This Week</span>
+
+                    </div>
+                </div>
+
+                <div id="order-history-container">
+
+
+                </div>
+
+
+
+
+            </section>
+
+        </main>
+
+    </div>
+    <footer class="dashboard-footer">
+        <p>&copy; 2026 Flor's Canteen | All rights reserved | Designed by Romelisa Patricia T. Castor</p>
+    </footer>
+    <script src="./js/theme.js"></script>
+    <script src="./js/Orderhistory.js"></script>
+</body>
+
+
+</html>
