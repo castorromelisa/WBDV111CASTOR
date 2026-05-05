@@ -1,0 +1,532 @@
+:root {
+    --bg-color: #fdfcf9;
+    --text-color: #2d3436;
+    --text-light: #747d8c;
+    --header-bg: #ffffff;
+    --nav-links: #2d3436;
+    --shadow: rgba(0, 0, 0, 0.08);
+    --border: #e2e2e2;
+    --accent: #e67e22;
+    --accent-hover: #d35400;
+    --footer-bg: #000000;
+    --footer-text: #ffffff;
+    --radius-pill: 50px;
+    --radius-card: 20px;
+    --card-bg: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-image: url("bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: var(--text-color);
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    /* Adds a 40% dark overlay */
+    z-index: -1;
+    /* Keeps it behind your login container */
+}
+
+h1 {
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+p {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 10px 0 20px;
+    color: var(--text-light);
+}
+
+/* Container & Panels */
+.container {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-card);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.05), 0 10px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    width: 950px;
+    max-width: 100%;
+    min-height: 600px;
+}
+
+.logo {
+    display: flex;
+    /* Aligns items horizontally */
+    align-items: center;
+    /* Centers items vertically against each other */
+    justify-content: center;
+    /* Centers the whole group in the form */
+    gap: 15px;
+    /* Adds space between the pot and the text */
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+    /* Keeps it in the flow of the form */
+}
+
+.logo::before {
+    content: "";
+    width: 60px;
+    /* Adjust width of the pot icon */
+    height: 60px;
+    /* Adjust height of the pot icon */
+    background-image: url("LOGO.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+}
+
+/* Styling for the "Flor's Canteen" text */
+.logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--accent);
+    /* Uses your orange theme color #e67e22 */
+    letter-spacing: 1px;
+}
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.sign-up-container {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+/* Animation Logic */
+.container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: show 0.6s;
+}
+
+@keyframes show {
+
+    0%,
+    49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+form {
+    background: var(--card-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+}
+
+.view {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Inputs */
+.input-group {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.input-group i:not(.eye-icon) {
+    position: absolute;
+    left: 15px;
+    color: var(--text-light);
+}
+
+.eye-icon {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    color: var(--text-light);
+    z-index: 10;
+}
+
+input {
+    background-color: #f4f4f4;
+    border: 1px solid var(--border);
+    padding: 12px 15px 12px 40px;
+    width: 100%;
+    font-size: 14px;
+    border-radius: 8px;
+    transition: border 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+
+
+/* 2. Tighten the form padding so it fits better */
+.sign-up-container form {
+    padding: 0 30px;
+    /* Reduced from 50px */
+}
+
+/* 3. Reduce spacing between input groups */
+.sign-up-container .input-group {
+    margin: 4px 0;
+    /* Reduced from 8px */
+}
+
+/* 4. Make inputs slightly smaller to save vertical space */
+.sign-up-container input {
+    padding: 10px 15px;
+    /* Reduced from 12px */
+    font-size: 13px;
+}
+
+/* 5. Adjust the title size and margin */
+.sign-up-container h1 {
+    font-size: 1.5rem;
+    /* Smaller header */
+    margin-bottom: 5px;
+}
+
+/* 6. Adjust Terms container spacing */
+.terms-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 10px 0;
+    /* Reduced margin */
+    text-align: left;
+}
+
+.terms-container label {
+    font-size: 0.7rem;
+    line-height: 1.2;
+}
+
+/* 7. Ensure the button is also lowercase */
+.sign-up-container .main-btn {
+    margin-top: 10px;
+    padding: 10px 40px;
+}
+
+/* Buttons & Socials */
+.main-btn {
+    border-radius: var(--radius-pill);
+    border: none;
+    background-color: var(--accent);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 60px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s, transform 0.1s;
+}
+
+.main-btn:hover {
+    background-color: var(--accent-hover);
+}
+
+.main-btn:active {
+    transform: scale(0.95);
+}
+
+.ghost-btn {
+    border-radius: var(--radius-pill);
+    border: 2px solid #ffffff;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 60px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.3s;
+}
+
+.ghost-btn:hover {
+    background: #ffffff;
+    color: var(--accent);
+}
+
+.social-container {
+    margin: 20px 0;
+}
+
+.social-container a {
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    height: 40px;
+    width: 40px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.social-container a:hover {
+    background-color: var(--bg-color);
+}
+
+/* Overlay Slider */
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+.overlay {
+    background: var(--accent);
+    background: linear-gradient(to right, var(--accent), var(--accent-hover));
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+    color: #ffffff;
+}
+
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-panel p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.overlay-left {
+    transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+.forgot-link {
+    color: var(--text-light);
+    font-size: 13px;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+.forgot-link:hover {
+    color: var(--accent);
+}
+
+/* Terms Link Hover effect */
+.terms-link:hover {
+    color: var(--accent-hover) !important;
+}
+
+/* Modal text scrollbar styling */
+.terms-text::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terms-text::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+}
+
+/* Modal Animation */
+.modal-content {
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Ensure checkbox doesn't inherit global input styles that might stretch it */
+.terms-container input[type="checkbox"] {
+    accent-color: var(--accent);
+    transform: scale(1.1);
+}
+
+/* Style for when we add the disabled attribute via JS */
+.main-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+.demo-accounts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    max-width: 450px;
+}
+
+.account-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 4px 6px var(--shadow);
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.admin-badge {
+    background-color: #ffe3e3;
+    color: #e74c3c;
+}
+
+.user-badge {
+    background-color: #fff0e6;
+    color: #e67e22;
+}
+
+.use-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: white;
+    border: 1px solid #e74c3c;
+    color: #e74c3c;
+    padding: 5px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.account-name {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.account-desc {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+.credential-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.credential-row .label {
+    color: var(--text-light);
+}
+
+.credential-row .value {
+    font-weight: bold;
+    color: var(--text-color);
+}
